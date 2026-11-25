@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Fake - Player</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body data-acesso="login" class="app">
+
+<div class="layout">
+
+    <!-- Barra lateral: navegação e playlists -->
+    <aside class="lateral">
+        <header class="cabecalho-lateral">
+            <a class="marca" href="#/">🎧 Spotify Fake</a>
+        </header>
+
+        <nav class="menu-principal">
+            <a href="#/" data-rota="inicio" data-icone="home">Início</a>
+            <a href="#/buscar" data-rota="buscar" data-icone="busca">Buscar</a>
+            <a href="#/curtidas" data-rota="curtidas" data-icone="coracao">Músicas curtidas</a>
+            <a href="#/playlists" data-rota="playlists" data-icone="lista">Playlists</a>
+        </nav>
+
+        <section class="biblioteca">
+            <div class="biblioteca-cab">
+                <span>Suas playlists</span>
+                <button type="button" id="btNovaPlaylist" class="btn-icone" title="Criar playlist" aria-label="Criar playlist"></button>
+            </div>
+            <ul id="listaPlaylistsLateral"></ul>
+        </section>
+
+        <footer class="rodape-lateral">
+            <span id="barraUsuario"></span>
+            <a href="../pagamento/pagamento.html">Premium</a>
+            <a href="../menu/menu.html" id="linkAdmin" hidden>Painel admin</a>
+            <a href="../login/login.html?trocar=1" id="linkTrocar" hidden>Trocar modo</a>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+            <p class="creditos">SpotifyFake &mdash; Projeto de DW1 &mdash; 4º Bimestre 2026<br>Matheus Dziubate &mdash; Turma: M32 &mdash; 2026</p>
+        </footer>
+    </aside>
+
+    <!-- Conteúdo: muda conforme a aba (início, busca, artista, curtidas, playlists) -->
+    <main id="conteudo" class="conteudo" tabindex="-1"></main>
+
+    <!-- Barra do player (sempre visível) -->
+    <section class="barra-player" aria-label="Controles do player">
+        <div class="bp-faixa">
+            <img id="bpCapa" src="../../imagens/capa_padrao.png" alt="Capa da música">
+            <div class="bp-textos">
+                <strong id="bpTitulo">Nenhuma música tocando</strong>
+                <span id="bpArtista">Escolha uma música</span>
+            </div>
+            <button type="button" id="bpCurtir" class="btn-icone btn-curtir-barra" title="Curtir" aria-label="Curtir" disabled></button>
+        </div>
+
+        <div class="bp-centro">
+            <div class="bp-botoes">
+                <button type="button" id="bpEmbaralhar" class="btn-icone" title="Aleatório" aria-label="Aleatório"></button>
+                <button type="button" id="bpAnterior" class="btn-icone" title="Anterior" aria-label="Música anterior"></button>
+                <button type="button" id="bpPlay" class="btn-play" title="Tocar/Pausar" aria-label="Tocar ou pausar"></button>
+                <button type="button" id="bpProxima" class="btn-icone" title="Próxima" aria-label="Próxima música"></button>
+                <button type="button" id="bpRepetir" class="btn-icone" title="Repetir" aria-label="Repetir"></button>
+            </div>
+            <div class="bp-progresso">
+                <span id="bpTempoAtual">0:00</span>
+                <input type="range" id="bpBarra" min="0" max="1000" value="0" step="1" aria-label="Progresso da música" disabled>
+                <span id="bpTempoTotal">0:00</span>
+            </div>
+        </div>
+
+        <div class="bp-volume">
+            <button type="button" id="bpMudo" class="btn-icone" title="Mudo" aria-label="Ligar/desligar o som"></button>
+            <input type="range" id="bpVolume" min="0" max="100" value="80" aria-label="Volume">
+        </div>
+    </section>
+</div>
+
+<audio id="audio" preload="none"></audio>
+
+<!-- menu "..." das músicas -->
+<div id="menuCtx" class="menu-ctx" hidden></div>
+
+<!-- janela de nome / confirmação -->
+<div id="modal" class="modal" hidden>
+    <form class="modal-caixa" id="modalForm">
+        <h3 id="modalTitulo"></h3>
+        <p id="modalTexto"></p>
+        <input type="text" id="modalCampo" maxlength="100" autocomplete="off">
+        <div class="modal-botoes">
+            <button type="button" id="modalCancelar" class="btn-sec">Cancelar</button>
+            <button type="submit" id="modalOk" class="btn-prim">OK</button>
+        </div>
+    </form>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="../auth.js"></script>
+<script src="../util.js"></script>
+<script src="player.js"></script>
+</body>
+</html>

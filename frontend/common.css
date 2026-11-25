@@ -1,0 +1,130 @@
+/* ======================================================
+   common.css - Estilos compartilhados de Header, Nav e Footer
+   Usado por todas as páginas do sistema SpotifyFake
+   ====================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-fundo: #121212;
+    --cor-superficie: #181818;
+    --cor-superficie-clara: #282828;
+    --cor-primaria: #1db954;
+    --cor-primaria-hover: #1ed760;
+    --cor-texto: #ffffff;
+    --cor-texto-suave: #b3b3b3;
+    --cor-borda: #3a3a3a;
+    --cor-aviso: #ff5252;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+header .logo-linha {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+header .logo-icone {
+    font-size: 1.8rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+}
+
+header p {
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+}
+
+/* --- Nav (menu de navegação) --- */
+nav {
+    background-color: var(--cor-superficie);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 0 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 0.9rem 1.1rem;
+    color: var(--cor-texto-suave);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+nav ul li a:hover,
+nav ul li a.ativo {
+    color: var(--cor-texto);
+    border-bottom-color: var(--cor-primaria);
+}
+
+/* --- Main --- */
+main.container-master {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.2rem;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto-suave);
+    text-align: center;
+    padding: 1.3rem 1rem;
+    border-top: 1px solid var(--cor-borda);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+footer strong {
+    color: var(--cor-texto);
+}
+
+/* --- Usuario logado + sair (na barra de navegacao) --- */
+nav ul li.nav-usuario {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+nav ul li.nav-usuario span {
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+}

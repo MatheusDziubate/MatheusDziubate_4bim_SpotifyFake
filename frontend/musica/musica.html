@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotifyFake - Músicas (Admin)</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../crud.css">
+</head>
+
+<body data-acesso="admin" onload="iniciar()">
+    <header>
+        <div class="logo-linha">
+            <span class="logo-icone">🎧</span>
+            <h1>SpotifyFake</h1>
+        </div>
+        <p>Adicione ou remova músicas quando quiser. Os usuários ouvem na hora.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../menu/menu.html">Início</a></li>
+            <li><a href="../usuario/usuario.html">Usuários</a></li>
+            <li><a href="../perfil/perfil.html">Perfis</a></li>
+            <li><a href="../artista/artista.html">Artistas</a></li>
+            <li><a href="../musica/musica.html" class="ativo">Músicas</a></li>
+            <li><a href="../player/player.html">Player</a></li>
+            <li class="nav-usuario"><span id="barraUsuario"></span><a href="#" onclick="logout(); return false;">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-master">
+        <div class="conteudo-principal">
+            <section class="form-esquerda">
+                <h2 id="tituloForm">Adicionar música</h2>
+
+                <label for="inputTitulo_musica">Nome da música</label>
+                <input type="text" id="inputTitulo_musica" placeholder="Ex: Obsessed" maxlength="150">
+
+                <label for="inputNome_artista">Nome do artista</label>
+                <input type="text" id="inputNome_artista" placeholder="Ex: Melanie Martinez" maxlength="100" list="listaArtistas">
+                <datalist id="listaArtistas"></datalist>
+
+                <label for="inputMp3">Arquivo MP3</label>
+                <input type="file" id="inputMp3" accept=".mp3,audio/mpeg" onchange="lerDuracao()">
+
+                <label for="inputUrlMp3">...ou link do MP3 (endereço direto do arquivo .mp3)</label>
+                <input type="text" id="inputUrlMp3" placeholder="https://site.com/musica.mp3" maxlength="500" onchange="lerDuracao()">
+
+                <label for="inputUrlCapa">Link da capa (opcional, se não for enviar a imagem)</label>
+                <input type="text" id="inputUrlCapa" placeholder="https://site.com/capa.jpg" maxlength="500" oninput="previewLink()">
+
+                <div id="divAviso">Preencha os dados, envie o MP3 e a capa (ou cole os links) e clique em Salvar.</div>
+
+                <div class="botoes-acao">
+                    <input type="button" value="Salvar" id="btSalvar" onclick="salvar()">
+                    <input type="button" value="Cancelar" id="btCancelar" onclick="cancelarEdicao()" style="display:none;">
+                </div>
+            </section>
+
+            <aside class="form-direita">
+                <h2>Capa da Música</h2>
+                <p class="instrucao-imagem">(Clique na imagem para escolher um arquivo, ou use o campo de link ao lado)</p>
+                <div class="img-container">
+                    <img id="imgMusica" src="/imagens/capa_padrao.png" alt="Capa da Música" onclick="acionarUpload()">
+                    <input type="file" id="inputImagem" accept="image/*" style="display: none;" onchange="previewImagem()">
+                </div>
+            </aside>
+        </div>
+
+        <section class="lista-registros">
+            <h3>Músicas no sistema</h3>
+
+            <div id="miniPlayer" class="mini-player" hidden>
+                <button type="button" class="mini-parar" onclick="pararOuvir()" title="Parar" aria-label="Parar">■</button>
+                <div class="mini-info">
+                    <strong id="miniTitulo"></strong>
+                    <span id="miniTempo">0:00 / 0:00</span>
+                </div>
+                <progress id="miniProgresso" value="0" max="100"></progress>
+            </div>
+
+            <div id="outputSaida">Carregando...</div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>SpotifyFake</strong> &mdash; Projeto de DW1 &mdash; 4º Bimestre 2026</p>
+        <p>Matheus Dziubate &mdash; Turma: M32 &mdash; 2026</p>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script src="../util.js"></script>
+    <script src="./musica.js"></script>
+</body>
+
+</html>

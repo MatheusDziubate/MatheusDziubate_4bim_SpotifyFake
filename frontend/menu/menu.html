@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotifyFake - Início</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+
+<body data-acesso="admin">
+    <header>
+        <div class="logo-linha">
+            <span class="logo-icone">🎧</span>
+            <h1>SpotifyFake</h1>
+        </div>
+        <p>Painel do administrador - gerencie usuários, perfis, artistas e músicas.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../menu/menu.html" class="ativo">Início</a></li>
+            <li><a href="../usuario/usuario.html">Usuários</a></li>
+            <li><a href="../perfil/perfil.html">Perfis</a></li>
+            <li><a href="../artista/artista.html">Artistas</a></li>
+            <li><a href="../musica/musica.html">Músicas</a></li>
+            <li><a href="../player/player.html">Player</a></li>
+            <li class="nav-usuario"><span id="barraUsuario"></span><a href="#" onclick="logout(); return false;">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-master">
+        <section class="resumo" aria-labelledby="tituloResumo">
+            <h2 id="tituloResumo" class="resumo-titulo">Resumo da plataforma</h2>
+            <p id="resumoStatus" class="resumo-status">Carregando...</p>
+
+            <div id="resumoConteudo" hidden>
+                <div class="numeros" id="numeros"></div>
+
+                <ul class="atencao" id="atencao" hidden></ul>
+
+                <div class="resumo-colunas">
+                    <div class="bloco">
+                        <h3>Músicas mais curtidas</h3>
+                        <ol class="ranking" id="listaCurtidas"></ol>
+                    </div>
+                    <div class="bloco">
+                        <h3>Artistas com mais músicas</h3>
+                        <ol class="ranking" id="listaArtistas"></ol>
+                    </div>
+                    <div class="bloco">
+                        <h3>Músicas por gênero</h3>
+                        <div class="generos" id="listaGeneros"></div>
+                    </div>
+                    <div class="bloco">
+                        <h3>Adicionadas por último</h3>
+                        <ol class="ranking sem-numero" id="listaRecentes"></ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="resumo-titulo gerenciar">Gerenciar</h2>
+        <div class="menu-grid">
+            <a href="../usuario/usuario.html" class="card-menu">
+                <div class="card-icon">👤</div>
+                <h2>Usuários</h2>
+                <p>Cadastrar, alterar, consultar e excluir usuários do sistema.</p>
+            </a>
+
+            <a href="../perfil/perfil.html" class="card-menu">
+                <div class="card-icon">🪪</div>
+                <h2>Perfis</h2>
+                <p>Gerenciar o perfil (foto, bio e nome de exibição) de cada usuário.</p>
+            </a>
+
+            <a href="../artista/artista.html" class="card-menu">
+                <div class="card-icon">🎤</div>
+                <h2>Artistas</h2>
+                <p>Cadastrar e gerenciar os artistas disponíveis na plataforma.</p>
+            </a>
+
+            <a href="../musica/musica.html" class="card-menu">
+                <div class="card-icon">🎵</div>
+                <h2>Músicas</h2>
+                <p>Adicionar e remover músicas (MP3 + capa). Os usuários ouvem na hora.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>SpotifyFake</strong> &mdash; Projeto de DW1 &mdash; 4º Bimestre 2026</p>
+        <p>Matheus Dziubate &mdash; Turma: M32 &mdash; 2026</p>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script src="../util.js"></script>
+    <script src="menu.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+/* ======================================================
+   crud.css - Estilo compartilhado dos formulários de CRUD
+   ====================================================== */
+
+.conteudo-principal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: var(--cor-superficie);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.form-esquerda {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-esquerda h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-primaria);
+    padding-bottom: 0.5rem;
+}
+
+.form-esquerda label {
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--cor-texto-suave);
+}
+
+.form-esquerda input[type="text"],
+.form-esquerda input[type="number"],
+.form-esquerda input[type="email"],
+.form-esquerda input[type="password"],
+.form-esquerda input[type="date"],
+.form-esquerda select,
+.form-esquerda textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--cor-superficie-clara);
+    color: var(--cor-texto);
+    transition: border-color 0.3s;
+}
+
+.form-esquerda textarea {
+    resize: vertical;
+    min-height: 70px;
+    font-family: inherit;
+}
+
+.form-esquerda input:focus,
+.form-esquerda select:focus,
+.form-esquerda textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+}
+
+.linha-id {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.linha-id input {
+    width: 150px;
+}
+
+/* --- Botões --- */
+input[type="button"] {
+    background-color: var(--cor-primaria);
+    color: #0a0a0a;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+input[type="button"]:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: scale(1.03);
+}
+
+.botoes-acao {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* --- Aviso --- */
+#divAviso {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(255, 82, 82, 0.12);
+    color: var(--cor-aviso);
+    border-left: 4px solid var(--cor-aviso);
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+/* --- Aside (imagem) --- */
+.form-direita {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-direita h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--cor-primaria);
+}
+
+.instrucao-imagem {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img-container img {
+    max-width: 100%;
+    height: 260px;
+    width: 260px;
+    object-fit: cover;
+    border: 3px dashed var(--cor-borda);
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+    background-color: var(--cor-superficie-clara);
+}
+
+.img-container img:hover {
+    border-color: var(--cor-primaria);
+    transform: scale(1.02);
+}
+
+/* --- Listagem --- */
+.lista-registros {
+    background-color: var(--cor-superficie);
+    padding: 1.6rem 2rem;
+    border-radius: 10px;
+}
+
+.lista-registros h3 {
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-primaria);
+    padding-bottom: 0.5rem;
+}
+
+#outputSaida {
+    font-family: 'Consolas', monospace;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--cor-texto-suave);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .conteudo-principal {
+        flex-direction: column;
+    }
+
+    .form-direita {
+        order: -1;
+        margin-bottom: 1.5rem;
+    }
+
+    .linha-id input {
+        flex: 1;
+        width: auto;
+    }
+}
+
+/* --- Tabela de musicas (admin) --- */
+.tabela-musicas,
+.tabela-registros {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-musicas th,
+.tabela-musicas td,
+.tabela-registros th,
+.tabela-registros td {
+    padding: 0.6rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+    vertical-align: middle;
+}
+
+.tabela-musicas th,
+.tabela-registros th {
+    color: var(--cor-texto-suave);
+    font-size: 0.85rem;
+}
+
+.tabela-musicas img,
+.tabela-registros img {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    display: block;
+}
+
+.tabela-musicas button,
+.tabela-registros button {
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.3rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: var(--cor-superficie-clara);
+    color: var(--cor-texto);
+}
+
+.tabela-musicas button.remover,
+.tabela-registros button.remover {
+    background-color: var(--cor-aviso);
+}
+
+.form-esquerda input[type="file"] {
+    color: var(--cor-texto-suave);
+}
+
+/* Campo de link abaixo da foto (perfil) */
+.rotulo-link {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--cor-texto-suave);
+    align-self: flex-start;
+}
+
+.campo-link {
+    width: 100%;
+    margin-top: 0.3rem;
+    padding: 0.6rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    background-color: var(--cor-superficie-clara);
+    color: var(--cor-texto);
+}
+
+.campo-link:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+}
+
+/* Tabelas com rolagem horizontal em telas pequenas */
+#outputSaida {
+    overflow-x: auto;
+}
+
+
+/* --- Filtro das tabelas --- */
+.barra-filtro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.campo-filtro {
+    flex: 0 1 360px;
+    min-width: 0;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    background-color: var(--cor-superficie-clara);
+    color: var(--cor-texto);
+    font-size: 0.95rem;
+}
+
+.campo-filtro:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+}
+
+.contagem-filtro {
+    color: var(--cor-texto-suave);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.filtro-vazio {
+    padding: 1rem 0.5rem;
+    color: var(--cor-texto-suave);
+}
+
+.tabela-registros tr[hidden] {
+    display: none;
+}
+
+/* --- Ouvir na tabela de músicas --- */
+.tabela-registros button.ouvir {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--cor-primaria);
+    color: #000;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.tabela-registros button.ouvir:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+.tabela-registros button.ouvir.quebrada {
+    background-color: var(--cor-aviso);
+    color: #fff;
+}
+
+.mini-player {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 0.9rem;
+    row-gap: 0.4rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.7rem 0.9rem;
+    background-color: var(--cor-superficie-clara);
+    border: 1px solid var(--cor-primaria);
+    border-radius: 8px;
+}
+
+.mini-player[hidden] {
+    display: none;
+}
+
+.mini-parar {
+    grid-row: 1 / 3;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--cor-texto);
+    color: #000;
+    cursor: pointer;
+}
+
+.mini-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.mini-info strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mini-info span {
+    color: var(--cor-texto-suave);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.mini-player progress {
+    width: 100%;
+    height: 6px;
+    accent-color: var(--cor-primaria);
+}

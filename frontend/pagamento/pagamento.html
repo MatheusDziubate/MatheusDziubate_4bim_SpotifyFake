@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Fake - Plano Premium</title>
+    <link rel="stylesheet" href="../player/player.css">
+    <link rel="stylesheet" href="pagamento.css">
+</head>
+<body data-acesso="login">
+
+<header>
+    <h2>Spotify Fake</h2>
+    <nav>
+        <a href="../player/player.html">Player</a>
+        <a href="pagamento.html" class="ativo">Premium</a>
+        <a href="../menu/menu.html" id="linkAdmin" hidden>Painel admin</a>
+        <span id="barraUsuario"></span>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+    </nav>
+</header>
+
+<main>
+    <section class="topo-planos">
+        <h1>💎 Escolha o seu plano</h1>
+        <p>Ouça sem limites. Cancele quando quiser.</p>
+    </section>
+
+    <section class="planos" id="planos"></section>
+
+    <section class="caixa-pagamento" id="caixaPagamento">
+        <h3>Pagamento</h3>
+        <p class="aviso-simulacao">⚠ Tela de demonstração: nenhum pagamento é realizado e nenhum dado digitado aqui é enviado ou salvo. Não digite dados reais de cartão.</p>
+
+        <p id="resumoPlano" class="resumo-plano">Selecione um plano acima.</p>
+
+        <label for="selectForma">Forma de pagamento</label>
+        <select id="selectForma" onchange="trocarForma()" disabled>
+            <option value="cartao">💳 Cartão de crédito</option>
+            <option value="pix">⚡ Pix</option>
+            <option value="boleto">📄 Boleto</option>
+        </select>
+
+        <div id="formaCartao" class="forma">
+            <label for="inputNomeCartao">Nome impresso no cartão</label>
+            <input type="text" id="inputNomeCartao" autocomplete="off" maxlength="60" placeholder="Ex: MARIA S SOUZA" disabled>
+
+            <label for="inputNumeroCartao">Número do cartão</label>
+            <input type="text" id="inputNumeroCartao" autocomplete="off" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" oninput="mascaraCartao(this)" disabled>
+
+            <div class="linha-dupla">
+                <div>
+                    <label for="inputValidade">Validade</label>
+                    <input type="text" id="inputValidade" autocomplete="off" inputmode="numeric" maxlength="5" placeholder="MM/AA" oninput="mascaraValidade(this)" disabled>
+                </div>
+                <div>
+                    <label for="inputCvv">CVV</label>
+                    <input type="text" id="inputCvv" autocomplete="off" inputmode="numeric" maxlength="4" placeholder="123" oninput="this.value = this.value.replace(/\D/g, '')" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div id="formaPix" class="forma" hidden>
+            <p class="texto-forma">Ao clicar em <strong>Gerar QR Code Pix</strong>, mostraremos um QR Code e o código "copia e cola" de exemplo (simulação).</p>
+
+            <div id="areaPix" class="area-pix" hidden>
+                <img id="qrPix" class="qr-pix" alt="QR Code Pix" width="240" height="240">
+                <p id="pixValor" class="pix-valor"></p>
+                <p class="pix-instrucao">Abra o app do seu banco, escolha <strong>Pix → Ler QR Code</strong> e aponte a câmera.</p>
+
+                <label for="pixCodigo">Pix copia e cola</label>
+                <textarea id="pixCodigo" class="pix-codigo" readonly rows="4"></textarea>
+
+                <div class="pix-botoes">
+                    <button type="button" id="btCopiarPix" class="btn-sec-pix" onclick="copiarPix()">📋 Copiar código</button>
+                    <button type="button" id="btSimularPix" class="btn-sec-pix" onclick="simularPagamentoPix()">✔ Simular pagamento realizado</button>
+                </div>
+                <p class="pix-aviso">⚠ QR Code de demonstração: a chave Pix é fictícia, então o banco não vai achar o destinatário e nada será cobrado.</p>
+            </div>
+        </div>
+
+        <div id="formaBoleto" class="forma" hidden>
+            <p class="texto-forma">Ao confirmar, mostraremos uma linha digitável de exemplo (simulação).</p>
+        </div>
+
+        <button id="btConfirmar" class="btn-confirmar" onclick="confirmarPagamento()" disabled>Confirmar assinatura</button>
+
+        <div id="saida" class="saida-pagamento" role="status"></div>
+    </section>
+</main>
+
+<footer>
+    <p><strong>SpotifyFake</strong> &mdash; Projeto de DW1 &mdash; 4º Bimestre 2026</p>
+    <p>Matheus Dziubate &mdash; Turma: M32 &mdash; 2026</p>
+</footer>
+
+<script src="../auth.js"></script>
+<script src="qrcode.js"></script>
+<script src="pagamento.js"></script>
+</body>
+</html>
